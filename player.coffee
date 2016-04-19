@@ -3,12 +3,41 @@
 #
 # Notes:
 #   A girl who is alone in the world.
-#   wouldn't be useful and amusing enough for day to day huboting.
-#   Uncomment the ones you want to try and experiment with.
 #
+# 
+# Useful Documentation:
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-module.exports = (robot) ->
+# Regexes:
+#   Pattern recognition is important for everyone, even girls.
+
+#   Example:
+#   ^attack (\w{3,})?\s*$ 
+
+#   List
+#     \s: any whitespace character
+#     ^: the beginning of the string 
+#     ^: the end of the string 
+#     \w: they say it's called a word character
+#     (): everyone knows how parentheses work, don't they?
+#     ?: 0 or 1 of the preceding character
+#   
+module.exports = (player) ->
+
+  player.hear /^be born$/, ->
+    player.brain.set 'characterSheet', {}
+    msg.send "you are born into the world crying"
+
+  player.hear /^attack (\w{3,})?\s*$/, (target) ->
+    msg.send "i want to hurt " + target + " but i can't"
+    msg.send "because i'm a baby"
+    msg.send "it's hard"
+
+# function delayedAlert() {
+#   timeoutID = window.setTimeout(slowAlert, 2000);
+# }
+
+# You can try to parse these on your own time.
 
   # robot.hear /badger/i, (msg) ->
   #   msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
